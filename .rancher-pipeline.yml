@@ -1,15 +1,10 @@
 stages:
-- name: Build
+- name: Deploy
   steps:
-  - publishImageConfig:
-      dockerfilePath: Dockerfile
-      buildContext: .
-      tag: fiware-idm-7.7
-      pushRemote: true
-    env:
-      PLUGIN_DEBUG: "true"
-      PLUGIN_INSECURE: "true"
-      PLUGIN_STORAGE_PATH: /var/lib/docker2
+  - applyYamlConfig:
+      path: ./keyrock-deployment.yaml
+  - applyYamlConfig:
+      path: ./keyrock-service.yaml
 timeout: 300
 notification:
   recipients:

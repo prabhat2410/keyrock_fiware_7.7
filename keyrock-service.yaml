@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  #annotations:
+   # field.cattle.io/creatorId: user-g2sjq
+   # field.cattle.io/ipAddresses: "null"
+   # field.cattle.io/publicEndpoints: '[{"addresses":["30.0.0.8"],"port":30510,"protocol":"TCP","serviceName":"fiware:keyrockserv","allNodes":true}]'
+   # field.cattle.io/targetDnsRecordIds: "null"
+    #field.cattle.io/targetWorkloadIds: '["deployment:fiware:keyrock"]'
+  creationTimestamp: null
+  labels:
+    cattle.io/creator: norman
+  name: keyrockserv
+  selfLink: /api/v1/namespaces/p-bvfxs-pipeline/services/keyrockserv
+spec:
+  externalIPs:
+  - 192.168.100.171
+  externalTrafficPolicy: Cluster
+  type: NodePort
+  ports:
+  - name: keyrockport
+    port: 3000
+    protocol: TCP
+    nodePort: 30052
+    targetPort: 3000
+  selector:
+    workloadID_keyrockserv: "true"
+  sessionAffinity: None
+status:
+  loadBalancer: {}

@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.7.0 (HEAD)
+  labels:
+    io.kompose.service: keyrock
+  name: keyrock
+spec:
+  replicas: 3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: keyrock
+    spec:
+      containers:
+      - env:
+        - name: DEBUG
+          value: idm:*
+        - name: IDM_ADMIN_EMAIL
+          value: admin@test.com
+        - name: IDM_ADMIN_PASS
+          value: "1234"
+        - name: IDM_ADMIN_USER
+          value: admin
+        - name: IDM_DB_DIALECT
+          value: postgres
+        - name: IDM_DB_HOST
+          value: postgres
+        - name: IDM_DB_PASS
+          value: password
+        - name: IDM_DB_PORT
+          value: "5432"
+        - name: IDM_DB_USER
+          value: postgres
+        - name: IDM_HOST
+          value: http://localhost:3000
+        - name: IDM_PORT
+          value: "3000"
+        image: csp2-centos-1:5000/fiware-idm
+        name: keyrock
+        resources:
+         limits:
+          memory: "500Mi"
+          cpu: "500m"
+         requests:
+          memory: "250Mi"
+          cpu: "250m"
+        ports:
+        - containerPort: 3000
+        resources: {}
+      restartPolicy: Always
+status: {}

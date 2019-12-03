@@ -1,18 +1,11 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.7.0 (HEAD)
-  labels:
-    io.kompose.service: keyrock
   name: keyrock
 spec:
   replicas: 3
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         io.kompose.service: keyrock
     spec:
@@ -51,6 +44,4 @@ spec:
           cpu: "250m"
         ports:
         - containerPort: 3000
-        resources: {}
       restartPolicy: Always
-status: {}

@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       labels:
-        io.kompose.service: keyrock
+        name: keyrock
     spec:
       containers:
       - env:

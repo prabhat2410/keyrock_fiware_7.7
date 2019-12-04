@@ -4,6 +4,7 @@ metadata:
   labels:
     name: keyrockserv
   name: keyrockserv
+  namespace: default
 spec:
   externalIPs:
   - 192.168.100.171

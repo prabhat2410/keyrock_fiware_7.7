@@ -2,13 +2,13 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: keyrock
+  namespace: default
 spec:
   replicas: 3
   template:
     metadata:
       labels:
         name: keyrock
-      namespace: default
     spec:
       containers:
       - env:

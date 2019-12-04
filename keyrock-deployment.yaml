@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: keyrock
+      namespace: default
     spec:
       containers:
       - env:
